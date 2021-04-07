@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+    <div id="nav">
+      <router-link to="/" class="home">首页</router-link>
+      <router-link to="/sort" class="sort">分类</router-link>
+      <router-link to="/cart" class="cart">购物车</router-link>
+      <router-link to="/user" class="user">我的</router-link>
+    </div>
+
   </div>
 </template>
 
@@ -18,15 +21,47 @@
 }
 
 #nav {
-  padding: 30px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 15px 0;
+  background-color: #f2f2f2;
 }
 
 #nav a {
+  position: relative;
+  flex: 1;
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
+}
+#nav a::before{
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 25px;
+  height: 25px;
+  background-size: cover;
+}
+#nav .home::before{
+  background-image: url("./assets/home.png");
+}
+#nav .sort::before{
+  background-image: url("./assets/sort.png");
+}
+#nav .cart::before{
+  background-image: url("./assets/cart.png");
+}
+#nav .user::before{
+  background-image: url("./assets/user.png");
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #e04006;
+}
+#nav a.router-link-exact-active::before{
+  background-position: 0 81px;
 }
 </style>
